@@ -27,4 +27,3 @@ docker compose -f docker-compose.db.yml up -d
 | `db/dump.sql` | Database dump (auto-loaded on first start) |
 | `requirements.txt` | Python dependencies                       |
 
-S
