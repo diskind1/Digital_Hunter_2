@@ -1,12 +1,9 @@
 import mysql.connector    
 from logger import logger
 
-
-
-
 def db_connection():
     connect = {
-        "host": "localhost",
+        "host": "mysql",
         "port": 3306,
         "user": "root",
         "password": "root",

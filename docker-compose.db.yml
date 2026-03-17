@@ -1,15 +1,39 @@
 services:
   mysql:
     image: mysql:8.0
-    container_name: mysql
+    container_name: mysql-digital_hunter-2
     environment:
-      MYSQL_ROOT_PASSWORD: root
+      MYSQL_ROOT_PASSWORD: root  
       MYSQL_DATABASE: digital_hunter
     ports:
       - "3306:3306"
     volumes:
       - mysql_data:/var/lib/mysql
       - ./dump.sql:/docker-entrypoint-initdb.d/dump.sql
+
+
+  phpmyadmin:
+    image: phpmyadmin:latest
+    container_name: phpmyadmin-digital_hunter-2
+    environment:
+      PMA_HOST: mysql
+      PMA_user: root
+      PMA_PASSWORD: root
+    ports:
+      - "8088:80"
+    depends_on:
+      - mysql
+
+
+  analytic:
+    build:
+      context: ./services/analytic
+      dockerfile: Dockerfile
+    container_name: analytic-digital_hunter-2
+    ports:
+      - "8000:8000"
+    depends_on:
+    - mysql
 
 volumes:
   mysql_data:
