@@ -12,9 +12,11 @@ def quality_goal_shift_alert():
     try:
         cursor = conn.cursor(dictionary=True)
         sql = """
-        SELECT * 
-        FROM targets
-        WHERE priority_level = 1
+        SELECT entity_id, target_name, priority_level
+        FROM targets as t
+        JOIN targets as ta
+        ON t.entity_id = ta.entity_id
+        WHERE t.priority_level IN (1, 2) AND t.r
         """
         cursor.execute(sql)
         res = cursor.fetchall()
