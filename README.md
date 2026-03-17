@@ -27,21 +27,4 @@ docker compose -f docker-compose.db.yml up -d
 | `db/dump.sql` | Database dump (auto-loaded on first start) |
 | `requirements.txt` | Python dependencies                       |
 
-
-
-לראות את הטבלאות עשיתי פקודה:
-docker exec -it mysql mysql -uroot -p digital_hunter -e "SHOW TABLES"
-
-התוצאה:
-+--------------------------+
-| Tables_in_digital_hunter |
-+--------------------------+
-| attacks                  |
-| damage_assessments       |
-| intel_signals            |
-| targets                  |
-+--------------------------+
-
-
-ואז ראיתי הכל:
-docker exec -it mysql mysql -uroot -p digital_hunter -e "SELECT * FROM attacks"
+S
